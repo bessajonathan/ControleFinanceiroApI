@@ -17,12 +17,14 @@ const ListarPeriodos = async(req,res) =>{
 
 const Buscartransacao = async (req, res) => {
   try {
-    const { id } = req.params;
-    const transacao = await TransactionModel.findById({ _id: id });
-    if (!transacao) {
+    const { descricao } = req.params;
+    const dados = await TransactionModel.find({});
+    const transacoes = dados.filter(x => x.description.toUpperCase().includes(descricao.toUpperCase()));
+
+    if (!transacoes) {
       res.status(404).send({ mensagem: "Transação não encontrada" });
     }
-    res.send(transacao);
+    res.send(transacoes);
   } catch (erro) {
     res.status(500).send(erro);
   }

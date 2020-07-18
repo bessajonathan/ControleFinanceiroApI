@@ -10,7 +10,7 @@ route.get("/", (req, res) => {
 });
 route.get("/v1", TransactionController.ListarPeriodos);
 route.get("/v1/:periodo", TransactionController.ListarDadosDoPeriodo);
-route.get("/v1/transacao/:id", TransactionController.Buscartransacao);
+route.get("/v1/transacao/:descricao", TransactionController.Buscartransacao);
 route.put("/v1/:id", TransactionController.EditarTransacao);
 route.post("/v1", TransactionController.InserirTransacao);
 route.delete("/v1/:id", TransactionController.ExcluirTransacao);
